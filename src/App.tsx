@@ -1,8 +1,8 @@
 import AppDrawer from "@/components/AppDrawer";
-
+import { ThemeProvider } from "@/components/theme-provider"
 function App() {
     return (
-        <>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
             <AppDrawer />
             <main className="p-4">
                 {/* Your page content with corresponding section IDs */}
@@ -12,7 +12,7 @@ function App() {
                 <section id="blog" className="py-10">Blog Section</section>
                 <section id="contact" className="py-10">Contact Section</section>
             </main>
-        </>
+        </ThemeProvider>
     );
 }
 
