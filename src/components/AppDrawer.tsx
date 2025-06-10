@@ -8,6 +8,7 @@ const AppDrawer = () => {
         <header
             className="w-full fixed top-0 left-0 flex items-center justify-between px-4 py-2 shadow-xl z-50">
             <h1 className="text-xl font-bold">Gurnish Singh</h1>
+            <div className="text-red-500 text-3xl align-middle">PRO</div>
             <nav className="hidden sm:flex gap-6 text-lg font-medium ml-auto">
                 <a href="#education" className="hover:underline">Education</a>
                 <a href="#skills" className="hover:underline">Skills</a>
@@ -23,7 +24,7 @@ const AppDrawer = () => {
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="right" className="w-64">
-                        <nav className="flex flex-col gap-4 mt-10 text-lg font-medium">
+                        <nav className="flex flex-col gap-4 mt-10 ml-4 text-lg font-medium">
                             <a href="#education" className="hover:underline">Education</a>
                             <a href="#skills" className="hover:underline">Skills</a>
                             <a href="#experience" className="hover:underline">Experience</a>
@@ -33,7 +34,7 @@ const AppDrawer = () => {
                     </SheetContent>
                 </Sheet>
             </div>
-            <ModeToggle />
+            <ModeToggle/>
         </header>
     );
 };
