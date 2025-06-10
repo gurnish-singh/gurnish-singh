@@ -1,16 +1,23 @@
-import AppDrawer from "@/components/AppDrawer";
-import { ThemeProvider } from "@/components/theme-provider"
+import AppDrawer from "@/components/sections/AppDrawer.tsx";
+import { ThemeProvider } from "@/components/nightMode/theme-provider.tsx"
+import About from "@/components/sections/About.tsx";
+import ResumeData from "./assets/resumeData.json";
+import Education from "@/components/sections/Education.tsx";
+import Skills from "@/components/sections/Skills.tsx";
+import Experience from "@/components/sections/Experience.tsx";
+import WorkTogether from "@/components/sections/WorkTogether.tsx";
 function App() {
     return (
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
             <AppDrawer />
             <main className="p-4">
                 {/* Your page content with corresponding section IDs */}
-                <section id="education" className="py-10">Education Section</section>
-                <section id="skills" className="py-10">Skills Section</section>
-                <section id="experience" className="py-10">Experience Section</section>
+                <About resumeData={ResumeData.main}/>
+                <Education resumeData={ResumeData.resume}/>
+                <Skills/>
+                <Experience resumeData={ResumeData.resume}/>
                 <section id="blog" className="py-10">Blog Section</section>
-                <section id="contact" className="py-10">Contact Section</section>
+                <WorkTogether/>
             </main>
         </ThemeProvider>
     );

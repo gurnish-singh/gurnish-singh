@@ -1,12 +1,12 @@
 // components/AppDrawer.tsx
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet.tsx";
+import { Button } from "@/components/ui/button.tsx";
 import { Menu } from "lucide-react";
-import {ModeToggle} from "@/components/mode-toggle.tsx";
+import {ModeToggle} from "@/components/nightMode/mode-toggle.tsx";
 const AppDrawer = () => {
     return (
         <header
-            className="w-full fixed top-0 left-0 flex items-center justify-between px-4 py-2 shadow-xl z-50">
+            className="w-full fixed top-0 left-0 flex items-center px-4 py-2 shadow-xl z-50 bg-background">
             <h1 className="text-xl font-bold">Gurnish Singh</h1>
             <div className="text-red-500 text-3xl align-middle">PRO</div>
             <nav className="hidden sm:flex gap-6 text-lg font-medium ml-auto">
