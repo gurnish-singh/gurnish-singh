@@ -15,7 +15,7 @@ function About({ resumeData }:{resumeData:ResumeData['main']}) {
                 <Card className="w-full">
                     <CardContent className="text-left">
                         <img
-                            src="src/assets/images/IMG_7265.jpg"
+                            src="public/IMG_7265.jpg"
                             alt={`${name} profile`}
                             className="rounded-2xl w-40 h-40 object-cover shadow-lg float-right ml-4 mb-2 hidden sm:block"
                         />
