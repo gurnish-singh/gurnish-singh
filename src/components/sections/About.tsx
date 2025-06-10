@@ -1,8 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
-
-function About({ resumeData }) {
+import type {ResumeData} from "src/ts/types.ts";
+function About({ resumeData }:{resumeData:ResumeData['main']}) {
     const {
         name,
         bio,

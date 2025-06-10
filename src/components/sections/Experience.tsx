@@ -1,9 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SiSamsung } from "react-icons/si";
-
-function Experience({ resumeData }) {
+import type {ResumeData, Work,} from "src/ts/types.ts";
+function Experience({ resumeData }:{resumeData:ResumeData['resume']}) {
     // Grouping roles by company
-    const groupedByCompany = resumeData.work.reduce((acc, role) => {
+    type GroupedByCompany = { [key: string]: Work[] };
+
+    const groupedByCompany: GroupedByCompany = resumeData.work.reduce((acc: GroupedByCompany, role: Work) => {
         if (!acc[role.company]) acc[role.company] = [];
         acc[role.company].push(role);
         return acc;
