@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import type {ResumeData} from "src/ts/types.ts";
+import profileImg from "@/assets/images/IMG_7265.jpg";
 function About({ resumeData }:{resumeData:ResumeData['main']}) {
     const {
         name,
@@ -15,7 +16,7 @@ function About({ resumeData }:{resumeData:ResumeData['main']}) {
                 <Card className="w-full">
                     <CardContent className="text-left">
                         <img
-                            src="public/IMG_7265.jpg"
+                            src={profileImg}
                             alt={`${name} profile`}
                             className="rounded-2xl w-40 h-40 object-cover shadow-lg float-right ml-4 mb-2 hidden sm:block"
                         />
