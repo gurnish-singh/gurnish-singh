@@ -9,10 +9,7 @@ const AppDrawer = () => {
         <header
             className="w-full fixed top-0 left-0 flex items-center px-4 py-2 shadow-xl z-50 bg-background">
             <div className="flex items-center gap-2">
-                <h1 className="text-xl font-bold whitespace-nowrap">Gurnish Singh</h1>
-                <div className="text-red-500 text-sm font-semibold px-2 py-0.5 border border-red-500 rounded">
-                    PRO
-                </div>
+                <div className="text-2xl sm:text-4xl font-bold whitespace-nowrap">Gurnish Singh</div>
             </div>
             <nav className="hidden lg:flex gap-6 text-lg font-medium ml-auto">
                 <a href="#education" className="hover:underline">Education</a>
