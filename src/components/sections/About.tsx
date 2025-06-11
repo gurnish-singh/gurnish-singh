@@ -13,7 +13,7 @@ function About({resumeData}: { resumeData: ResumeData['main'] }) {
 
     return (
         <section id="about" className="py-10 mt-10">
-            <div className="w-full px-4 mt-20">
+            <div className="w-full px-4 ">
                 <Card className="w-full">
                     <CardContent className="text-left">
                         <img
