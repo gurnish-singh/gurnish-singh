@@ -16,27 +16,31 @@ function Footer({resumeData}:{resumeData:ResumeData['main']['social']}) {
 
     return (
         <footer className="py-6 border-t">
-            <div className="container mx-auto px-4 grid grid-cols-3 items-center">
+            <div
+                className="container mx-auto px-4 flex flex-col items-center gap-6 sm:grid sm:grid-cols-3 sm:items-center sm:gap-4">
+
                 {/* Left - Social Icons */}
-                <ul className="flex gap-4 justify-start">
-                    {resumeData.map((network) => (
-                        <li key={network.name}>
-                            <a
-                                href={network.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="hover:text-primary transition-colors"
-                            >
-                                {iconMap[network.name] || <FaGlobe size={20}/>}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                <div className="w-full flex justify-center sm:justify-start">
+                    <ul className="flex gap-4">
+                        {resumeData.map((network) => (
+                            <li key={network.name}>
+                                <a
+                                    href={network.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-primary transition-colors"
+                                >
+                                    {iconMap[network.name] || <FaGlobe size={20}/>}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
 
                 {/* Center - Copyright */}
-                <ul className="text-sm text-muted-foreground text-center">
-                    <li>&copy; {new Date().getFullYear()} Gurnish Singh</li>
-                    <li>
+                <div className="w-full text-center text-sm text-muted-foreground leading-relaxed">
+                    <p>&copy; {new Date().getFullYear()} Gurnish Singh</p>
+                    <p>
                         Design by{" "}
                         <a
                             href="https://www.linkedin.com/in/gurnish-singh/"
@@ -44,9 +48,9 @@ function Footer({resumeData}:{resumeData:ResumeData['main']['social']}) {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Gurnish Singh <span> </span>
-                        </a>
-                        and styled using {" "}
+                            Gurnish Singh
+                        </a>{" "}
+                        and styled using{" "}
                         <a
                             href="https://ui.shadcn.com/"
                             className="underline hover:text-primary"
@@ -55,11 +59,11 @@ function Footer({resumeData}:{resumeData:ResumeData['main']['social']}) {
                         >
                             Shadcn
                         </a>
-                    </li>
-                </ul>
+                    </p>
+                </div>
 
                 {/* Right - Go Top */}
-                <div className="flex justify-end">
+                <div className="w-full flex justify-center sm:justify-end">
                     <a
                         href="#about"
                         className="hover:text-primary transition-all"
@@ -68,6 +72,7 @@ function Footer({resumeData}:{resumeData:ResumeData['main']['social']}) {
                         <FaArrowUp size={20}/>
                     </a>
                 </div>
+
             </div>
         </footer>
     );
