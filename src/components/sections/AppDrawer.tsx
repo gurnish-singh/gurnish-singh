@@ -8,16 +8,20 @@ const AppDrawer = () => {
     return (
         <header
             className="w-full fixed top-0 left-0 flex items-center px-4 py-2 shadow-xl z-50 bg-background">
-            <h1 className="text-xl font-bold">Gurnish Singh</h1>
-            <div className="text-red-500 text-3xl align-middle">PRO</div>
-            <nav className="hidden sm:flex gap-6 text-lg font-medium ml-auto">
+            <div className="flex items-center gap-2">
+                <h1 className="text-xl font-bold whitespace-nowrap">Gurnish Singh</h1>
+                <div className="text-red-500 text-sm font-semibold px-2 py-0.5 border border-red-500 rounded">
+                    PRO
+                </div>
+            </div>
+            <nav className="hidden lg:flex gap-6 text-lg font-medium ml-auto">
                 <a href="#education" className="hover:underline">Education</a>
                 <a href="#skills" className="hover:underline">Skills</a>
                 <a href="#experience" className="hover:underline">Experience</a>
                 <a href="#blog" className="hover:underline">Blog</a>
                 <a href="#contact" className="hover:underline">Contact</a>
             </nav>
-            <div className="sm:hidden ml-auto">
+            <div className="lg:hidden ml-auto">
                 <Sheet>
                     <SheetTrigger asChild>
                         <Button variant="outline" size="icon">
