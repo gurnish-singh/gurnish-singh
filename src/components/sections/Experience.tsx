@@ -1,7 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { SiSamsung } from "react-icons/si";
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {SiSamsung} from "react-icons/si";
 import type {ResumeData, Work,} from "src/ts/types.ts";
-function Experience({ resumeData }:{resumeData:ResumeData['resume']}) {
+
+function Experience({resumeData}: { resumeData: ResumeData['resume'] }) {
     // Grouping roles by company
     type GroupedByCompany = { [key: string]: Work[] };
 
@@ -20,7 +21,7 @@ function Experience({ resumeData }:{resumeData:ResumeData['resume']}) {
                         <Card key={company} className="rounded-2xl shadow-md dark:bg-gray-900">
                             <CardHeader className="flex flex-row items-center gap-4">
                                 {company.includes("Samsung") && (
-                                    <SiSamsung className="w-20 h-20 " />
+                                    <SiSamsung className="w-20 h-20 "/>
                                 )}
                                 <CardTitle className="text-xl font-bold">{company}</CardTitle>
                             </CardHeader>

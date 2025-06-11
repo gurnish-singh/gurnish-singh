@@ -1,73 +1,77 @@
 {
   "main": {
-    "name":"Gurnish Singh",
-    "description":"I am a web development engineer and I use react and vue.js to develop pages. This project is a resume template that can be used as the project home page or resume page",
-    "bio":"Hi, I'm Gurnish Singh, a software developer at Samsung SDS. I am a pro level software test certified professional with a deep passion for software development, web development, and cloud technologies. I'm always looking for ways to innovate and improve in these areas.\n\nOver the years, I have developed a strong expertise in programming languages like Java, C++ and JavaScript, as well as software architecture. I have been fortunate enough to work on a number of exciting projects that have allowed me to push the boundaries of what's possible in the tech industry.\n\n I have had the opportunity to mentor more than 30 new developers who have joined my current company, and it has been incredibly rewarding to watch them develop their skills and become valuable contributors to the company.\n\nWhen I'm not developing software or mentoring new developers, I like to stay active and healthy. I hit the gym regularly and also enjoy playing badminton with friends.\n\nOverall, I'm a passionate and dedicated software developer who is always striving to be the best I can be.",
-    "contactmessage":"Welcome! I'm excited to connect with you. Whether you have a question, an idea, or just want to chat, feel free to contact me anytime. I'm here to listen, offer support, and provide information whenever possible. Let's start a conversation and see where it takes us! You can reach out to me through the links below. Looking forward to hearing from you soon!",
+    "name": "Gurnish Singh",
+    "description": "I am a web development engineer and I use react and vue.js to develop pages. This project is a resume template that can be used as the project home page or resume page",
+    "bio": "Hi, I'm Gurnish Singh, a software developer at Samsung SDS. I am a pro level software test certified professional with a deep passion for software development, web development, and cloud technologies. I'm always looking for ways to innovate and improve in these areas.\n\nOver the years, I have developed a strong expertise in programming languages like Java, C++ and JavaScript, as well as software architecture. I have been fortunate enough to work on a number of exciting projects that have allowed me to push the boundaries of what's possible in the tech industry.\n\n I have had the opportunity to mentor more than 30 new developers who have joined my current company, and it has been incredibly rewarding to watch them develop their skills and become valuable contributors to the company.\n\nWhen I'm not developing software or mentoring new developers, I like to stay active and healthy. I hit the gym regularly and also enjoy playing badminton with friends.\n\nOverall, I'm a passionate and dedicated software developer who is always striving to be the best I can be.",
+    "contactmessage": "Welcome! I'm excited to connect with you. Whether you have a question, an idea, or just want to chat, feel free to contact me anytime. I'm here to listen, offer support, and provide information whenever possible. Let's start a conversation and see where it takes us! You can reach out to me through the links below. Looking forward to hearing from you soon!",
     "email": "gurnish3956@gmail.com",
     "phone": "+91 9877619424",
-    "github":"https://github.com/gurnish-singh",
-    "project":"https://github.com/nordicgiant2/react-nice-resume",
-    "address":{
-      "street":"Agar Nagar Near Bus Stand",
-      "city":"Malerkotla",
-      "state":"Punjab ",
+    "github": "https://github.com/gurnish-singh",
+    "project": "https://github.com/nordicgiant2/react-nice-resume",
+    "address": {
+      "street": "Agar Nagar Near Bus Stand",
+      "city": "Malerkotla",
+      "state": "Punjab ",
       "zip": "148023"
     },
     "website": "http://www.timbakerdev.com",
-    "resumeDownload":"https://drive.google.com/file/d/1TP8hpVsQRz23nDKq-kx4beOTvzNk8jiP/view?usp=sharing",
-    "social":[
+    "resumeDownload": "https://drive.google.com/file/d/1TP8hpVsQRz23nDKq-kx4beOTvzNk8jiP/view?usp=sharing",
+    "social": [
       {
-        "name":"twitter",
-        "url":"https://twitter.com/gurnish__singh",
-        "className":"fab fa-twitter fa-3x"
+        "name": "mail",
+        "url": "mailto:gurnishsinghji@gmail.com",
+        "className": "fab fa-envelope fa-3x"
       },
       {
-        "name":"linkedin",
-        "url":"https://www.linkedin.com/in/gurnish-singh/",
-        "className":"fab fa-linkedin fa-3x"
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/gurnish-singh/",
+        "className": "fab fa-linkedin fa-3x"
       },
       {
-        "name":"instagram",
-        "url":"https://www.instagram.com/_kaljugi/",
-        "className":"fab fa-instagram fa-3x"
+        "name": "github",
+        "url": "https://github.com/gurnish-singh",
+        "className": "fab fa-github fa-3x"
       },
       {
-        "name":"github",
-        "url":"https://github.com/gurnish-singh",
-        "className":"fab fa-github fa-3x"
+        "name": "leetcode",
+        "url": "https://leetcode.com/gurnish-singh",
+        "className": "fa-solid fa-code fa-3x"
       },
       {
-        "name":"leetcode",
-        "url":"https://leetcode.com/gurnish-singh",
-        "className":"fa-solid fa-code fa-3x"
+        "name": "twitter",
+        "url": "https://twitter.com/gurnish__singh",
+        "className": "fab fa-twitter fa-3x"
+      },
+      {
+        "name": "instagram",
+        "url": "https://www.instagram.com/gurnish1708/",
+        "className": "fab fa-instagram fa-3x"
       }
     ]
   },
-  "resume":{
-    "skillmessage":"Here you can create a short write-up of your skills to show off to employers",
-    "education":[
+  "resume": {
+    "skillmessage": "Here you can create a short write-up of your skills to show off to employers",
+    "education": [
       {
-        "school":"Thapar Institute of Engineering anf Technology",
-        "degree":"Bachelors in Electronics and Computer Science CGPA:8.43",
-        "graduated":"June 2021",
-        "description":"I pursued computer science engineering at Thapar Institute of Engineering and Technology, where I gained confidence in complex programming languages and data structures. Throughout my degree, I worked on various projects, both individually and in groups, which helped me apply my knowledge in real-world situations. Graduating with honors, I landed a job as a software engineer at a top tech company, grateful for the education and experiences that prepared me for the challenges and opportunities ahead."
+        "school": "Thapar Institute of Engineering anf Technology",
+        "degree": "Bachelors in Electronics and Computer Science CGPA:8.43",
+        "graduated": "June 2021",
+        "description": "I pursued computer science engineering at Thapar Institute of Engineering and Technology, where I gained confidence in complex programming languages and data structures. Throughout my degree, I worked on various projects, both individually and in groups, which helped me apply my knowledge in real-world situations. Graduating with honors, I landed a job as a software engineer at a top tech company, grateful for the education and experiences that prepared me for the challenges and opportunities ahead."
       }
     ],
-    "work":[
+    "work": [
       {
-        "company":"Samsung SDS",
-        "title":"Assistant Manager",
-        "years":"July 2023 - Present",
-        "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        "company": "Samsung SDS",
+        "title": "Assistant Manager",
+        "years": "July 2023 - Present",
+        "description": "Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
       },
       {
-        "company":"Samsung SDS",
-        "title":"Senior Executive",
-        "years":"July 2021 - June 2023",
-        "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        "company": "Samsung SDS",
+        "title": "Senior Executive",
+        "years": "July 2021 - June 2023",
+        "description": "Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
       }
-
     ]
   }
 }

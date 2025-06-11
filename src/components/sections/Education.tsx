@@ -1,6 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card";
+import {Card, CardContent} from "@/components/ui/card";
 import type {ResumeData} from "src/ts/types.ts";
-function Education({ resumeData }:{resumeData:ResumeData['resume']}) {
+
+function Education({resumeData}: { resumeData: ResumeData['resume'] }) {
     if (!resumeData?.education) return null;
 
     return (

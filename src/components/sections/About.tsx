@@ -1,9 +1,10 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import {Card, CardContent} from "@/components/ui/card";
+import {Button} from "@/components/ui/button";
+import {Download} from "lucide-react";
 import type {ResumeData} from "src/ts/types.ts";
 import profileImg from "@/assets/images/IMG_7265.jpg";
-function About({ resumeData }:{resumeData:ResumeData['main']}) {
+
+function About({resumeData}: { resumeData: ResumeData['main'] }) {
     const {
         name,
         bio,

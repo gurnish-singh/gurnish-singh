@@ -19,17 +19,17 @@ import {
 } from "react-icons/fa";
 
 const skills = [
-    { title: "HTML5", Icon: FaHtml5 },
-    { title: "CSS3", Icon: FaCss3Alt },
-    { title: "JavaScript", Icon: FaJs },
-    { title: "ReactJS", Icon: FaReact },
-    { title: "NodeJS", Icon: FaNodeJs },
-    { title: "VueJS", Icon: FaVuejs },
-    { title: "Spring Boot", Icon: FaPowerOff },
-    { title: "Java", Icon: FaJava },
-    { title: "AWS", Icon: FaAws},
-    { title: "SQL", Icon: FaDatabase },
-    { title: "GitHub", Icon: FaGithubSquare},
+    {title: "HTML5", Icon: FaHtml5},
+    {title: "CSS3", Icon: FaCss3Alt},
+    {title: "JavaScript", Icon: FaJs},
+    {title: "ReactJS", Icon: FaReact},
+    {title: "NodeJS", Icon: FaNodeJs},
+    {title: "VueJS", Icon: FaVuejs},
+    {title: "Spring Boot", Icon: FaPowerOff},
+    {title: "Java", Icon: FaJava},
+    {title: "AWS", Icon: FaAws},
+    {title: "SQL", Icon: FaDatabase},
+    {title: "GitHub", Icon: FaGithubSquare},
 ];
 
 function Skills() {
