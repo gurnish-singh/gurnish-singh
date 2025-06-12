@@ -1,43 +1,39 @@
-import {Card, CardContent} from "@/components/ui/card";
-import {Button} from "@/components/ui/button";
-import {Download} from "lucide-react";
-import type {ResumeData} from "src/ts/types.ts";
-import profileImg from "@/assets/images/IMG_7265.jpg";
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Download } from 'lucide-react';
+import type { ResumeData } from '@/ts/resumeData.ts';
+import profileImg from '@/assets/images/IMG_7265.jpg';
 
-function About({resumeData}: { resumeData: ResumeData['main'] }) {
-    const {
-        name,
-        bio,
-        resumeDownload,
-    } = resumeData;
+function About({ resumeData }: { resumeData: ResumeData['main'] }) {
+  const { name, bio, resumeDownload } = resumeData;
 
-    return (
-        <section id="about" className="py-10 mt-10">
-            <div className="w-full px-4 ">
-                <Card className="w-full">
-                    <CardContent className="text-left">
-                        <img
-                            src={profileImg}
-                            alt={`${name} profile`}
-                            className="rounded-2xl w-40 h-40 object-cover shadow-lg float-right ml-4 mb-2 hidden sm:block"
-                        />
-                        <h2 className="text-2xl font-semibold mb-4">About Me</h2>
-                        <p className="text-muted-foreground whitespace-pre-line mb-4">
-                            {bio}
-                        </p>
-                        <div className="flex gap-2 justify-end clear-both">
-                            <Button asChild variant="default">
-                                <a href={resumeDownload} download>
-                                    <Download className="mr-2 h-4 w-4"/>
-                                    Download Resume
-                                </a>
-                            </Button>
-                        </div>
-                    </CardContent>
-                </Card>
+  return (
+    <section id="about" className="py-10 mt-10">
+      <div className="w-full px-4 ">
+        <Card className="w-full">
+          <CardContent className="text-left">
+            <img
+              src={profileImg}
+              alt={`${name} profile`}
+              className="rounded-2xl w-40 h-40 object-cover shadow-lg float-right ml-4 mb-2 hidden sm:block"
+            />
+            <h2 className="text-2xl font-semibold mb-4">About Me</h2>
+            <p className="text-muted-foreground whitespace-pre-line mb-4">
+              {bio}
+            </p>
+            <div className="flex gap-2 justify-end clear-both">
+              <Button asChild variant="default">
+                <a href={resumeDownload} download>
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
             </div>
-        </section>
-    );
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
 }
 
 export default About;
