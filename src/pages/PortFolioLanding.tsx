@@ -1,13 +1,13 @@
 // src/pages/PortfolioLanding.tsx
-import AppDrawer from '@/components/sections/AppDrawer';
-import { ThemeProvider } from '@/components/nightMode/theme-provider';
-import About from '@/components/sections/About';
+import AppDrawer from '@/components/sections/AppDrawer.tsx';
+import { ThemeProvider } from '@/components/nightMode/theme-provider.tsx';
+import About from '@/components/sections/About.tsx';
 import ResumeData from '@/assets/resumeData.json';
-import Education from '@/components/sections/Education';
-import Skills from '@/components/sections/Skills';
-import Experience from '@/components/sections/Experience';
-import WorkTogether from '@/components/sections/WorkTogether';
-import Footer from '@/components/sections/Footer';
+import Education from '@/components/sections/Education.tsx';
+import Skills from '@/components/sections/Skills.tsx';
+import Experience from '@/components/sections/Experience.tsx';
+import WorkTogether from '@/components/sections/WorkTogether.tsx';
+import Footer from '@/components/sections/Footer.tsx';
 import Blogs from '@/components/sections/Blogs.tsx';
 
 function PortfolioLanding() {

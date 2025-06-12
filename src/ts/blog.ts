@@ -4,6 +4,7 @@ export default interface BlogPost {
   slug: {
     current: string;
   };
+  author: string;
   mainImage: {
     asset: {
       _ref: string;

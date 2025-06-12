@@ -1,13 +1,13 @@
 // App.tsx
 import { Routes, Route } from 'react-router-dom';
-import PortfolioLanding from '@/components/PortFolioLanding.tsx';
-import BlogPost from '@/components/modals/BlogPost.tsx';
+import PortfolioLanding from '@/pages/PortFolioLanding.tsx';
+import BlogPost from '@/pages/AllBlogs.tsx';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<PortfolioLanding />} />
-      <Route path="/blog/:slug" element={<BlogPost />} />
+      <Route path="/blogs" element={<BlogPost />} />
     </Routes>
   );
 }
