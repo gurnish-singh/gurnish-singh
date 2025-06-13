@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from '@portabletext/types';
+
 export default interface BlogPost {
   _id: string;
   title: string;
@@ -14,5 +16,5 @@ export default interface BlogPost {
   };
   publishedAt: string;
   excerpt: string;
-  body: string;
+  body: PortableTextBlock[];
 }

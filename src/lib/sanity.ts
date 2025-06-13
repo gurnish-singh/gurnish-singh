@@ -1,6 +1,7 @@
 // src/lib/sanity.ts
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+import type BlogPost from '@/ts/blog.ts';
 
 const projectId = '0z26388c';
 const dataset = 'production';
@@ -22,8 +23,17 @@ export async function getPosts() {
     _id, title, slug, mainImage, publishedAt, excerpt,"author": author->name
   }`);
 }
-export async function getPost(slug: string) {
-  return await sanity.fetch(`*[_type == "post" && slug.current == $slug][0]`, {
-    slug,
-  });
+export async function getPost(slug: string): Promise<BlogPost | null> {
+  const query = `
+    *[_type == "post" && slug.current == $slug][0]{
+      _id,
+      title,
+      slug,
+      publishedAt,
+      mainImage,
+      body,
+      "author": author->name
+    }
+  `;
+  return await sanity.fetch(query, { slug });
 }
