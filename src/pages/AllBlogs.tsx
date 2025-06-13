@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 import type BlogPost from '@/ts/blog.ts';
 import { urlFor } from '@/lib/sanity.ts';
 import AppDrawer from '@/components/sections/AppDrawer.tsx';
-import { ThemeProvider } from '@/components/nightMode/theme-provider.tsx';
 
 function AllBlogs() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -22,7 +21,7 @@ function AllBlogs() {
   }, []);
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <>
       <AppDrawer />
       <section className="pt-24 px-4 max-w-3xl mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-center">All Blog Posts</h2>
@@ -67,7 +66,7 @@ function AllBlogs() {
           ))}
         </Accordion>
       </section>
-    </ThemeProvider>
+    </>
   );
 }
 
