@@ -65,8 +65,8 @@ const AppDrawer = () => {
             </div>
           </>
         )}
-        <ModeToggle />
       </div>
+      <ModeToggle />
     </header>
   );
 };

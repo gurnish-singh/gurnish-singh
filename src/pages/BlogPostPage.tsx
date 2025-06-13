@@ -6,6 +6,7 @@ import type BlogPost from '@/ts/blog.ts';
 import { PortableText } from '@portabletext/react';
 import { Card, CardContent } from '@/components/ui/card.tsx';
 import AppDrawer from '@/components/sections/AppDrawer.tsx';
+import { ThemeProvider } from '@/components/nightMode/theme-provider.tsx';
 
 function BlogPostPage() {
   const { slug } = useParams();
@@ -20,7 +21,7 @@ function BlogPostPage() {
   if (!post) return <p className="text-center mt-20">Loading...</p>;
 
   return (
-    <>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <AppDrawer />
       <section className="pt-24 px-4 max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
@@ -43,7 +44,7 @@ function BlogPostPage() {
           </CardContent>
         </Card>
       </section>
-    </>
+    </ThemeProvider>
   );
 }
 
