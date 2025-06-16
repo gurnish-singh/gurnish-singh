@@ -1,4 +1,4 @@
-import tardis from 'src/assets/images/telephone_booth.gif';
+import tardis from '@/assets/images/telephone_booth.gif';
 export default function TimePortal() {
   return (
     <div className="group">
