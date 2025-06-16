@@ -21,8 +21,8 @@ export default interface BlogPost {
 export interface MediumPost {
   title: string;
   link: string;
-  pubDate: string;
-  contentSnippet: string;
+  publishedAt: string;
+  author: string;
+  excerpt: string;
   thumbnail?: string;
 }
-

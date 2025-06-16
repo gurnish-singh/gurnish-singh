@@ -10,16 +10,31 @@ import { useEffect, useState } from 'react';
 import { getPosts } from '@/lib/sanity.ts';
 import { Link } from 'react-router-dom';
 import type BlogPost from '@/ts/blog.ts';
+import type { MediumPost } from '@/ts/blog';
 import { urlFor } from '@/lib/sanity.ts';
 import AppDrawer from '@/components/sections/AppDrawer.tsx';
+import { getMediumPosts } from '@/lib/medium.ts';
 
 function AllBlogs() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-
+  type CombinedPost =
+    | (BlogPost & { source: 'sanity' })
+    | (MediumPost & { source: 'medium' });
+  const [combinedPosts, setCombinedPosts] = useState<CombinedPost[]>([]);
   useEffect(() => {
-    getPosts().then(setPosts);
-  }, []);
+    Promise.all([getPosts(), getMediumPosts()]).then(([sanity, medium]) => {
+      const latestSanityPosts = sanity.slice(0, 3).map((p: BlogPost) => ({
+        ...p,
+        source: 'sanity' as const,
+      }));
 
+      const latestMediumPosts = medium.slice(0, 2).map((p: MediumPost) => ({
+        ...p,
+        source: 'medium' as const,
+      }));
+
+      setCombinedPosts([...latestSanityPosts, ...latestMediumPosts]);
+    });
+  }, []);
   return (
     <>
       <AppDrawer />
@@ -27,8 +42,8 @@ function AllBlogs() {
         <h2 className="text-3xl font-bold mb-8 text-center">All Blog Posts</h2>
 
         <Accordion type="multiple" className="space-y-4">
-          {posts.map((post) => (
-            <AccordionItem key={post._id} value={`post-${post.slug.current}`}>
+          {combinedPosts.map((post, index) => (
+            <AccordionItem key={index} value={`post-${index}`}>
               <AccordionTrigger className="px-3 py-2 flex items-center justify-between text-left text-base font-medium hover:bg-muted rounded-md">
                 <span className="font-semibold truncate flex-1">
                   {post.title}
@@ -42,11 +57,21 @@ function AllBlogs() {
               </AccordionTrigger>
               <AccordionContent className="px-3 pb-4">
                 <Card className="flex flex-col h-full border border-muted rounded-md shadow-sm">
-                  {post.mainImage && (
+                  {post.source === 'sanity' ? (
+                    post.mainImage && (
+                      <img
+                        src={urlFor(post.mainImage).width(800).url()}
+                        alt={post.title}
+                        className="w-full aspect-video object-cover rounded-t-md"
+                      />
+                    )
+                  ) : (
                     <img
-                      src={urlFor(post.mainImage).width(700).url()}
+                      src={
+                        post.thumbnail || 'https://via.placeholder.com/800x400'
+                      }
                       alt={post.title}
-                      className="w-full aspect-video object-cover rounded-md mb-3"
+                      className="w-full aspect-video object-cover rounded-t-md"
                     />
                   )}
                   <CardContent className="p-3 space-y-2">
@@ -54,7 +79,14 @@ function AllBlogs() {
                     <p className="text-sm text-muted-foreground">
                       {post.excerpt}
                     </p>
-                    <Link to={`/blog/${post.slug.current}`}>
+                    <Link
+                      to={
+                        post.source === 'sanity'
+                          ? `/blog/${post.slug.current}`
+                          : post.link
+                      }
+                      target="_blank"
+                    >
                       <Button variant="link" className="text-blue-600 p-0">
                         Read more →
                       </Button>

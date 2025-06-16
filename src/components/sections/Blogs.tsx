@@ -69,11 +69,7 @@ function Blogs() {
                   <CardContent className="flex-1 p-4 space-y-2">
                     <div className="flex justify-between items-center text-xs text-gray-500">
                       <span>
-                        {new Date(
-                          post.source === 'sanity'
-                            ? post.publishedAt
-                            : post.pubDate
-                        ).toLocaleDateString()}
+                        {new Date(post.publishedAt).toLocaleDateString()}
                       </span>
                       <Badge
                         className={
@@ -89,9 +85,7 @@ function Blogs() {
                     </div>
                     <CardTitle>{post.title}</CardTitle>
                     <p className="text-sm text-muted-foreground">
-                      {post.source === 'sanity'
-                        ? post.excerpt
-                        : post.contentSnippet}
+                      {post.excerpt}
                     </p>
                     <Link
                       to={

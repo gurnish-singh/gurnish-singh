@@ -43,7 +43,7 @@ function Experience({ resumeData }: { resumeData: ResumeData['resume'] }) {
                         {role.years}
                       </em>
                     </p>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="text-gray-600 dark:text-gray-400 whitespace-pre-line">
                       {role.description}
                     </p>
                   </div>

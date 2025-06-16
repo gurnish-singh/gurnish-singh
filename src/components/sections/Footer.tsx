@@ -6,6 +6,7 @@ import {
   FaArrowUp,
   FaTwitter,
   FaInstagram,
+  FaMediumM,
 } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import type { ResumeData } from '@/ts/resumeData.ts';
@@ -17,6 +18,7 @@ const iconMap: { [key: string]: JSX.Element } = {
   instagram: <FaInstagram size={20} />,
   twitter: <FaTwitter size={20} />,
   mail: <FaEnvelope size={20} />,
+  medium: <FaMediumM size={20} />,
 };
 
 function Footer({ resumeData }: { resumeData: ResumeData['main']['social'] }) {
