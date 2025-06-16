@@ -11,15 +11,30 @@ import { useEffect, useState } from 'react';
 import { getPosts } from '@/lib/sanity.ts';
 import { Link } from 'react-router-dom';
 import type BlogPost from '@/ts/blog';
+import type { MediumPost } from '@/ts/blog';
 import { urlFor } from '@/lib/sanity.ts';
+import { getMediumPosts } from '@/lib/medium.ts';
+import Badge from '@/components/ui/badge.tsx';
 function Blogs() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-
+  type CombinedPost =
+    | (BlogPost & { source: 'sanity' })
+    | (MediumPost & { source: 'medium' });
+  const [combinedPosts, setCombinedPosts] = useState<CombinedPost[]>([]);
   useEffect(() => {
-    getPosts().then(setPosts);
-  }, []);
+    Promise.all([getPosts(), getMediumPosts()]).then(([sanity, medium]) => {
+      const latestSanityPosts = sanity.slice(0, 3).map((p: BlogPost) => ({
+        ...p,
+        source: 'sanity' as const,
+      }));
 
-  const latestPosts = posts.slice(0, 5);
+      const latestMediumPosts = medium.slice(0, 2).map((p: MediumPost) => ({
+        ...p,
+        source: 'medium' as const,
+      }));
+
+      setCombinedPosts([...latestSanityPosts, ...latestMediumPosts]);
+    });
+  }, []);
 
   return (
     <section id="blogs" className="py-10">
@@ -28,28 +43,64 @@ function Blogs() {
 
         <Carousel className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
           <CarouselContent className="gap-x-2">
-            {latestPosts.map((post) => (
+            {combinedPosts.map((post, index) => (
               <CarouselItem
-                key={post._id}
+                key={index}
                 className="basis-full xs:basis-1/2 sm:basis-1/3 lg:basis-1/4 flex-shrink-0"
               >
                 <Card className="flex flex-col h-full">
-                  {post.mainImage && (
+                  {post.source === 'sanity' ? (
+                    post.mainImage && (
+                      <img
+                        src={urlFor(post.mainImage).width(800).url()}
+                        alt={post.title}
+                        className="w-full aspect-video object-cover rounded-t-md"
+                      />
+                    )
+                  ) : (
                     <img
-                      src={urlFor(post.mainImage).width(800).url()}
+                      src={
+                        post.thumbnail || 'https://via.placeholder.com/800x400'
+                      }
                       alt={post.title}
                       className="w-full aspect-video object-cover rounded-t-md"
                     />
                   )}
                   <CardContent className="flex-1 p-4 space-y-2">
-                    <div className="text-xs text-gray-500">
-                      {new Date(post.publishedAt).toLocaleDateString()}
+                    <div className="flex justify-between items-center text-xs text-gray-500">
+                      <span>
+                        {new Date(
+                          post.source === 'sanity'
+                            ? post.publishedAt
+                            : post.pubDate
+                        ).toLocaleDateString()}
+                      </span>
+                      <Badge
+                        className={
+                          post.source === 'medium'
+                            ? 'bg-green-100 text-green-800'
+                            : 'bg-blue-100 text-blue-800'
+                        }
+                      >
+                        {post.source === 'medium'
+                          ? 'From Medium'
+                          : 'From My Blog'}
+                      </Badge>
                     </div>
                     <CardTitle>{post.title}</CardTitle>
                     <p className="text-sm text-muted-foreground">
-                      {post.excerpt}
+                      {post.source === 'sanity'
+                        ? post.excerpt
+                        : post.contentSnippet}
                     </p>
-                    <Link to={`/blog/${post.slug.current}`}>
+                    <Link
+                      to={
+                        post.source === 'sanity'
+                          ? `/blog/${post.slug.current}`
+                          : post.link
+                      }
+                      target="_blank"
+                    >
                       <Button variant="link" className="text-blue-600 p-0">
                         Read more →
                       </Button>

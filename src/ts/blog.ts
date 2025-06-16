@@ -18,3 +18,11 @@ export default interface BlogPost {
   excerpt: string;
   body: PortableTextBlock[];
 }
+export interface MediumPost {
+  title: string;
+  link: string;
+  pubDate: string;
+  contentSnippet: string;
+  thumbnail?: string;
+}
+
