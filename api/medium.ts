@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import Parser = require('rss-parser');
+import Parser from 'rss-parser';
 
 const parser = new Parser({
   customFields: {
