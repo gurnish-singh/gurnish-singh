@@ -11,6 +11,7 @@ import {
 import { SiLeetcode } from 'react-icons/si';
 import type { ResumeData } from '@/ts/resumeData.ts';
 import type { JSX } from 'react';
+import TimePortal from '@/components/ui/timeMachinePortal.tsx';
 const iconMap: { [key: string]: JSX.Element } = {
   linkedin: <FaLinkedin size={20} />,
   github: <FaGithub size={20} />,
@@ -25,7 +26,7 @@ function Footer({ resumeData }: { resumeData: ResumeData['main']['social'] }) {
   if (!resumeData) return null;
 
   return (
-    <footer className="py-6 border-t">
+    <footer className="relative py-6 border-t">
       <div className="container mx-auto px-4 flex flex-col items-center gap-6 sm:grid sm:grid-cols-3 sm:items-center sm:gap-4">
         {/* Left - Social Icons */}
         <div className="w-full flex justify-center sm:justify-start">
@@ -80,6 +81,9 @@ function Footer({ resumeData }: { resumeData: ResumeData['main']['social'] }) {
             <FaArrowUp size={20} />
           </a>
         </div>
+      </div>
+      <div className="absolute bottom-0 right-0 p-2">
+        <TimePortal />
       </div>
     </footer>
   );
