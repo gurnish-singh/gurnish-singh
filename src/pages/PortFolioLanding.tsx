@@ -8,6 +8,7 @@ import Experience from '@/components/sections/Experience.tsx';
 import WorkTogether from '@/components/sections/WorkTogether.tsx';
 import Footer from '@/components/sections/Footer.tsx';
 import Blogs from '@/components/sections/Blogs.tsx';
+import WebExperiments from '@/components/sections/WebExperiments.tsx';
 
 function PortfolioLanding() {
   return (
@@ -19,6 +20,7 @@ function PortfolioLanding() {
         <Skills />
         <Experience resumeData={ResumeData.resume} />
         <Blogs />
+        <WebExperiments />
         <WorkTogether />
         <Footer resumeData={ResumeData.main.social} />
       </main>
