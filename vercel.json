@@ -6,4 +6,3 @@
     }
   ]
 }
-//Vercel serves only files that exist, so direct navigation to something like  /experiments/tangled-sine returns a 404.
