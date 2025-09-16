@@ -27,7 +27,7 @@ function Blogs() {
         source: 'sanity' as const,
       }));
 
-      const latestMediumPosts = medium.slice(0, 2).map((p: MediumPost) => ({
+      const latestMediumPosts = medium.map((p: MediumPost) => ({
         ...p,
         source: 'medium' as const,
       }));

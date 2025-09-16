@@ -27,7 +27,7 @@ function AllBlogs() {
         source: 'sanity' as const,
       }));
 
-      const latestMediumPosts = medium.slice(0, 2).map((p: MediumPost) => ({
+      const latestMediumPosts = medium.map((p: MediumPost) => ({
         ...p,
         source: 'medium' as const,
       }));
@@ -38,24 +38,25 @@ function AllBlogs() {
   return (
     <>
       <AppDrawer />
-      <section className="pt-24 px-4 max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">All Blog Posts</h2>
-
-        <Accordion type="multiple" className="space-y-4">
+      <section className="pt-16 px-2 sm:pt-24 sm:px-4 max-w-3xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">
+          All Blog Posts
+        </h2>
+        <Accordion type="multiple" className="space-y-3 sm:space-y-4">
           {combinedPosts.map((post, index) => (
             <AccordionItem key={index} value={`post-${index}`}>
-              <AccordionTrigger className="px-3 py-2 flex items-center justify-between text-left text-base font-medium hover:bg-muted rounded-md">
-                <span className="font-semibold truncate flex-1">
+              <AccordionTrigger className="px-2 py-2 sm:px-3 flex items-center justify-between text-left text-base sm:text-lg font-medium hover:bg-muted rounded-md">
+                <span className="font-semibold flex-1 max-w-[120px] sm:max-w-[220px] md:max-w-[320px]">
                   {post.title}
                 </span>
-                <div className="text-right text-sm text-muted-foreground ml-auto pl-2">
+                <div className="text-right text-xs sm:text-sm text-muted-foreground ml-auto pl-2">
                   <span className="block">{`by ${post.author || 'Unknown'}`}</span>
                   <span className="text-xs text-gray-500">
                     {new Date(post.publishedAt).toLocaleDateString()}
                   </span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="px-3 pb-4">
+              <AccordionContent className="px-2 sm:px-3 pb-3 sm:pb-4">
                 <Card className="flex flex-col h-full border border-muted rounded-md shadow-sm">
                   {post.source === 'sanity' ? (
                     post.mainImage && (
@@ -63,6 +64,7 @@ function AllBlogs() {
                         src={urlFor(post.mainImage).width(800).url()}
                         alt={post.title}
                         className="w-full aspect-video object-cover rounded-t-md"
+                        style={{ maxHeight: '200px' }}
                       />
                     )
                   ) : (
@@ -72,11 +74,14 @@ function AllBlogs() {
                       }
                       alt={post.title}
                       className="w-full aspect-video object-cover rounded-t-md"
+                      style={{ maxHeight: '200px' }}
                     />
                   )}
-                  <CardContent className="p-3 space-y-2">
-                    <CardTitle className="text-lg">{post.title}</CardTitle>
-                    <p className="text-sm text-muted-foreground">
+                  <CardContent className="p-2 sm:p-3 space-y-1 sm:space-y-2">
+                    <CardTitle className="text-base sm:text-lg">
+                      {post.title}
+                    </CardTitle>
+                    <p className="text-xs sm:text-sm text-muted-foreground">
                       {post.excerpt}
                     </p>
                     <Link
@@ -87,7 +92,10 @@ function AllBlogs() {
                       }
                       target="_blank"
                     >
-                      <Button variant="link" className="text-blue-600 p-0">
+                      <Button
+                        variant="link"
+                        className="text-blue-600 p-0 text-xs sm:text-base"
+                      >
                         Read more →
                       </Button>
                     </Link>
