@@ -9,6 +9,7 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import TangledSine from '@/components/webExperiments/tangledSine.tsx';
+import Chess from '../webExperiments/chess';
 type Experiment = {
   id: string;
   title: string;
@@ -23,6 +24,13 @@ export const experiments: Experiment[] = [
     description:
       'A generative art experiment using sine waves that all start and end together, creating tangled ribbon-like patterns.',
     component: <TangledSine />,
+  },
+  {
+    id: 'chess',
+    title: 'Interactive Chess game',
+    description:
+      'Maybe I just want to play a game of chess thats why...',
+    component: <Chess />,
   },
 ];
 

@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
 :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -58,7 +59,8 @@ body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
-    background-color: var(--background); /* or white if you want: #ffffff */
+    background-color: var(--background);
+    /* or white if you want: #ffffff */
     color: var(--foreground);
 }
 
@@ -159,4 +161,16 @@ h1 {
     body {
         @apply bg-background text-foreground;
     }
+}
+
+.selected {
+    border: 2px solid blue !important;
+    /* Highlights boundaries */
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+}
+
+.canMove {
+    border: 2px solid green !important;
+    /* Highlights boundaries */
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
 }
