@@ -6,11 +6,11 @@ export function getPawnMoves(
     board: any[][],
     row: number,
     col: number,
-    blackTurn: boolean
+    playingAsBlack: boolean,
 ) {
     const moves: [number, number][] = [];
-    const direction = board[row][col].isBlack ? (blackTurn ? -1 : +1) : (!blackTurn ? -1 : +1);
-    const startRow = board[row][col].isBlack ? (blackTurn ? 6 : 1) : (!blackTurn ? 6 : 1);
+    const direction = playingAsBlack ? (board[row][col].isBlack ? -1 : +1) : (board[row][col].isBlack ? +1 : -1);
+    const startRow = playingAsBlack ? (board[row][col].isBlack ? 6 : +1) : (board[row][col].isBlack ? +1 : 6);
     // Forward 1
     if (isInsideBoard(row + direction, col) &&
         board[row + direction][col].piece === '0') {

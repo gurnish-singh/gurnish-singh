@@ -5,6 +5,8 @@ import { getPawnMoves, getKnightMoves, getRookMoves, getBishopMoves, getQueenMov
 export default function Chess() {
 
     const [currentTurn, setTurn] = useState(false);
+    const [playingAsBlack, setPlayingAsBlack] = useState(false);
+    const [currentlySelected, setCurrentlySelected] = useState({ row: -1, col: -1 });
     const [chessPositions, setChessPositions] = useState(() => {
         const board = Array.from({ length: 8 }, () =>
             Array.from({ length: 8 }, () => ({ piece: '0', isSelected: false, canMoveTo: false, isBlack: false }))
@@ -32,7 +34,7 @@ export default function Chess() {
         board[0][2].piece = '♝';
         board[7][2].piece = '♗';
         board[0][5].piece = '♝';
-        board[4][5].piece = '♗';
+        board[7][5].piece = '♗';
         board[0][3].piece = '♛';
         board[7][4].piece = '♔';
         board[0][4].piece = '♚';
@@ -41,57 +43,93 @@ export default function Chess() {
     });
     useEffect(() => { }, []);
     function reversePositions() {
-        setTurn((turn) => !turn);
-        setChessPositions((prev) => {
-            prev.map((row) => [...row.reverse()]);
-            return [...prev].reverse();
-        });
+        setPlayingAsBlack(prev => !prev);
+        setChessPositions(prev =>
+            prev
+                .map(row => [...row].reverse())
+                .reverse()
+        );
     }
     function handlePieceClick(row: number, col: number) {
-        setChessPositions((positions) => {
-            const piece = positions[row][col].piece;
-            let validMoves: [number, number][] = [];
-            switch (piece) {
-                case '♙':
-                case '♟':
-                    validMoves = getPawnMoves(positions, row, col, currentTurn);
-                    break;
-
-                case '♜':
-                case '♖':
-                    validMoves = getRookMoves(positions, row, col);
-                    break;
-
-                case '♞':
-                case '♘':
-                    validMoves = getKnightMoves(positions, row, col);
-                    break;
-                case '♝':
-                case '♗':
-                    validMoves = getBishopMoves(positions, row, col);
-                    break;
-
-                case '♛':
-                case '♕':
-                    validMoves = getQueenMoves(positions, row, col);
-                    break;
-
-                case '♚':
-                case '♔':
-                    validMoves = getKingMoves(positions, row, col);
-                    break;
+        if (currentlySelected.row == -1) {//// selecting a new piece
+            if ((chessPositions[row][col].isBlack && !currentTurn) || (!chessPositions[row][col].isBlack && currentTurn)) return;
+            if (chessPositions[row][col].piece !== '0') {
+                setCurrentlySelected({ row, col });
             }
+            setChessPositions((positions) => {
+                const piece = positions[row][col].piece;
+                let validMoves: [number, number][] = [];
+                switch (piece) {
+                    case '♙':
+                    case '♟':
+                        validMoves = getPawnMoves(positions, row, col, playingAsBlack);
+                        break;
 
-            return positions.map((r, i) =>
-                r.map((cell, j) => ({
-                    ...cell,
-                    isSelected: i === row && j === col,
-                    canMoveTo: validMoves.some(
-                        ([mr, mc]) => mr === i && mc === j
-                    ),
-                }))
-            );
-        });
+                    case '♜':
+                    case '♖':
+                        validMoves = getRookMoves(positions, row, col);
+                        break;
+
+                    case '♞':
+                    case '♘':
+                        validMoves = getKnightMoves(positions, row, col);
+                        break;
+                    case '♝':
+                    case '♗':
+                        validMoves = getBishopMoves(positions, row, col);
+                        break;
+
+                    case '♛':
+                    case '♕':
+                        validMoves = getQueenMoves(positions, row, col);
+                        break;
+
+                    case '♚':
+                    case '♔':
+                        validMoves = getKingMoves(positions, row, col);
+                        break;
+                }
+                return positions.map((r, i) =>
+                    r.map((cell, j) => ({
+                        ...cell,
+                        isSelected: i === row && j === col,
+                        canMoveTo: validMoves.some(
+                            ([mr, mc]) => mr === i && mc === j
+                        ),
+                    }))
+                );
+            });
+        }
+        // if a piece is already selected
+        else {
+            setChessPositions((positions) => {
+                const newPositions = positions.map(row =>
+                    row.map(cell => ({ ...cell }))
+                );
+
+                if (newPositions[row][col].canMoveTo) {
+                    const from = newPositions[currentlySelected.row][currentlySelected.col];
+                    const to = newPositions[row][col];
+
+                    to.piece = from.piece;
+                    to.isBlack = from.isBlack;
+
+                    from.piece = '0';
+                    from.isBlack = false;
+                    setTurn(!currentTurn)
+                }
+
+                setCurrentlySelected({ row: -1, col: -1 });
+
+                return newPositions.map(r =>
+                    r.map(cell => ({
+                        ...cell,
+                        isSelected: false,
+                        canMoveTo: false,
+                    }))
+                );
+            });
+        }
     }
 
     return (
@@ -104,7 +142,7 @@ export default function Chess() {
                 }}
             >
                 <Button onClick={() => reversePositions()}>
-                    {'Play as ' + (currentTurn ? ' White' : 'Black')}
+                    {'Play as ' + (playingAsBlack ? ' White' : 'Black')}
                 </Button>
                 <div style={{ background: 'white', }}>
                     {chessPositions.map((i, _i) => {
@@ -123,7 +161,7 @@ export default function Chess() {
                                                 justifyContent: 'center',
                                                 fontSize: '20px',
                                                 background:
-                                                    (_j % 2 == 1) == (_i % 2 == 1) ? '#C7E0C1' : '#F5ECE6',
+                                                    (_j % 2 == (playingAsBlack ? 1 : 0)) == (_i % 2 == 1) ? '#6f4141ff' : '#F5ECE6',
                                             }}
                                             onClick={() => {
                                                 handlePieceClick(_i, _j);
