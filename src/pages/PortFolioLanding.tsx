@@ -9,21 +9,44 @@ import WorkTogether from '@/components/sections/WorkTogether.tsx';
 import Footer from '@/components/sections/Footer.tsx';
 import Blogs from '@/components/sections/Blogs.tsx';
 import WebExperiments from '@/components/sections/WebExperiments.tsx';
+import ReadingOutline from '@/components/ui/ReadingOutline.tsx';
 
 function PortfolioLanding() {
   return (
     <>
       <AppDrawer />
-      <main className="p-4">
-        <About resumeData={ResumeData.main} />
-        <Education resumeData={ResumeData.resume} />
-        <Skills />
-        <Experience resumeData={ResumeData.resume} />
-        <Blogs />
-        <WebExperiments />
-        <WorkTogether />
-        <Footer resumeData={ResumeData.main.social} />
-      </main>
+      <ReadingOutline>
+        <main className="p-4">
+          <section id="about" data-outline data-title="About">
+            <About resumeData={ResumeData.main} />
+          </section>
+
+          <section id="education" data-outline data-title="Education">
+            <Education resumeData={ResumeData.resume} />
+          </section>
+
+          <section id="skills" data-outline data-title="Skills">
+            <Skills />
+          </section>
+
+          <section id="experience" data-outline data-title="Experience">
+            <Experience resumeData={ResumeData.resume} />
+          </section>
+
+          <section id="blogs" data-outline data-title="Blogs">
+            <Blogs />
+          </section>
+
+          <section id="experiments" data-outline data-title="Experiments">
+            <WebExperiments />
+          </section>
+
+          <section id="contact" data-outline data-title="Work Together">
+            <WorkTogether />
+          </section>
+          <Footer resumeData={ResumeData.main.social} />
+        </main>
+      </ReadingOutline>
     </>
   );
 }
