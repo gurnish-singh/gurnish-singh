@@ -9,7 +9,7 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import TangledSine from '@/components/webExperiments/tangledSine.tsx';
-import Chess from '../webExperiments/chess';
+import Chess from '../webExperiments/Chess';
 type Experiment = {
   id: string;
   title: string;
